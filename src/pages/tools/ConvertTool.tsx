@@ -4,6 +4,7 @@ import ImageUploader from "@/components/ImageUploader";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { motion } from "framer-motion";
 
 const formats = [
   { value: "image/png", label: "PNG", ext: "png" },
@@ -18,12 +19,10 @@ const ConvertTool = () => {
   const [originalFormat, setOriginalFormat] = useState("");
 
   const onImageLoad = useCallback((img: HTMLImageElement, file: File) => {
-    setImage(img);
-    setOriginalFormat(file.type || "unknown");
+    setImage(img); setOriginalFormat(file.type || "unknown");
     const canvas = canvasRef.current;
     if (!canvas) return;
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
+    canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
     canvas.getContext("2d")!.drawImage(img, 0, 0);
   }, []);
 
@@ -39,34 +38,22 @@ const ConvertTool = () => {
 
   return (
     <ToolLayout title="Convert Format" description="Convert your image to PNG, JPEG, or WebP" onDownload={download} showDownload={!!image}>
-      {!image ? (
-        <ImageUploader onImageLoad={onImageLoad} />
-      ) : (
-        <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
-          <div className="space-y-4 rounded-xl border bg-card p-5">
-            <p className="text-sm text-muted-foreground">Original format: <span className="font-medium text-foreground">{originalFormat}</span></p>
+      {!image ? <ImageUploader onImageLoad={onImageLoad} /> : (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid gap-6 lg:grid-cols-[300px_1fr]">
+          <div className="space-y-4 glass-card rounded-2xl p-5">
+            <p className="text-sm text-muted-foreground">Original: <span className="font-medium text-foreground">{originalFormat}</span></p>
             <div>
               <Label>Convert to</Label>
               <Select value={format} onValueChange={setFormat}>
                 <SelectTrigger><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  {formats.map((f) => (
-                    <SelectItem key={f.value} value={f.value}>{f.label}</SelectItem>
-                  ))}
-                </SelectContent>
+                <SelectContent>{formats.map((f) => <SelectItem key={f.value} value={f.value}>{f.label}</SelectItem>)}</SelectContent>
               </Select>
             </div>
-            <Button onClick={download} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-              Convert & Download
-            </Button>
-            <Button variant="outline" className="w-full" onClick={() => setImage(null)}>
-              Upload New Image
-            </Button>
+            <Button onClick={download} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Convert & Download</Button>
+            <Button variant="outline" className="w-full" onClick={() => setImage(null)}>New Image</Button>
           </div>
-          <div className="overflow-auto rounded-xl border bg-secondary/30 p-4">
-            <canvas ref={canvasRef} className="max-w-full rounded" />
-          </div>
-        </div>
+          <div className="overflow-auto glass-card rounded-2xl p-4"><canvas ref={canvasRef} className="max-w-full rounded-lg" /></div>
+        </motion.div>
       )}
     </ToolLayout>
   );
