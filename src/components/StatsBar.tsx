@@ -12,7 +12,7 @@ const StatsBar = () => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: 0.6, duration: 0.5 }}
-    className="flex items-center gap-4 sm:gap-6 mt-10 overflow-x-auto pb-2 scrollbar-none"
+    className="flex items-center gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-10 overflow-x-auto pb-2 scrollbar-none justify-center lg:justify-start"
   >
     {stats.map(({ icon: Icon, label, desc }) => (
       <div key={label} className="flex items-center gap-3 glass-card rounded-xl px-4 py-3 flex-shrink-0">
