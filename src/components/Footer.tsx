@@ -1,17 +1,17 @@
-import { Image, Github, Twitter } from "lucide-react";
+import { Github, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnimatedLogo from "./AnimatedLogo";
 
 const Footer = () => (
   <footer className="px-3 pb-4 pt-8 sm:px-4">
     <div className="mx-auto max-w-6xl rounded-2xl border border-border/50 bg-card/60 backdrop-blur-xl shadow-lg py-10 px-6 sm:px-8">
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
         <div>
-          <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-foreground mb-3">
-            <Image className="h-5 w-5 text-primary" />
-            Pixel<span className="gradient-text">Forge</span>
-          </Link>
+          <div className="mb-3">
+            <AnimatedLogo />
+          </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Free online photo editing tools. All processing happens locally — your images never leave your device.
+            Free online photo editing & AI tools. All processing happens locally — your images never leave your device.
           </p>
         </div>
         <div>
@@ -40,7 +40,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-8 border-t border-border/50 pt-6 text-center text-xs text-muted-foreground">
-        © 2026 PixelForge. Built with ❤️ for creators everywhere.
+        © 2026 Banglafeel. Built with ❤️ for creators everywhere.
       </div>
     </div>
   </footer>

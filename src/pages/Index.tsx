@@ -3,6 +3,10 @@ import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
 import HeroOrb from "@/components/HeroOrb";
 import StatsBar from "@/components/StatsBar";
+import AIToolsCarousel from "@/components/AIToolsCarousel";
+import ParticleField from "@/components/ParticleField";
+import GlowingTestimonials from "@/components/GlowingTestimonials";
+import CounterSection from "@/components/CounterSection";
 import { motion } from "framer-motion";
 import {
   Scaling, Crop, Palette, RotateCw, FileDown, FileType,
@@ -39,6 +43,7 @@ const Index = () => {
 
       {/* Hero */}
       <section className="hero-section relative overflow-hidden py-20 md:py-28">
+        <ParticleField />
         <div className="container relative mx-auto px-4">
           <div className="flex items-center justify-between gap-12">
             <div className="max-w-2xl">
@@ -77,18 +82,18 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="flex flex-wrap gap-3"
+                className="flex items-center gap-3"
               >
                 <a
                   href="#tools"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 sm:px-6 py-3 font-display text-sm font-semibold text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105 whitespace-nowrap"
                   style={{ boxShadow: "0 8px 32px hsl(28 100% 55% / 0.3)" }}
                 >
                   Explore Tools
                 </a>
                 <a
                   href="#how-it-works"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-6 py-3 font-display text-sm font-semibold text-foreground hover:bg-secondary transition-all"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-5 sm:px-6 py-3 font-display text-sm font-semibold text-foreground hover:bg-secondary transition-all whitespace-nowrap"
                 >
                   How It Works
                 </a>
@@ -105,6 +110,12 @@ const Index = () => {
         <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-accent/5 blur-3xl" />
       </section>
+
+      {/* AI Tools Carousel */}
+      <AIToolsCarousel />
+
+      {/* Animated Counters */}
+      <CounterSection />
 
       {/* Tools Grid */}
       <section id="tools" className="container mx-auto px-4 py-20">
@@ -174,6 +185,9 @@ const Index = () => {
           ))}
         </div>
       </section>
+
+      {/* Testimonials */}
+      <GlowingTestimonials />
 
       {/* Coming Soon */}
       <section className="container mx-auto px-4 pb-20">
