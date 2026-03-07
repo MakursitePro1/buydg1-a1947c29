@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Image, Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import AnimatedLogo from "./AnimatedLogo";
 
 const navLinks = [
   { label: "All Tools", href: "/" },
@@ -18,15 +19,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 px-3 pt-3 sm:px-4">
       <div className="mx-auto max-w-6xl rounded-2xl border border-border/50 bg-background/60 backdrop-blur-xl shadow-lg">
         <div className="flex h-14 items-center justify-between px-4 sm:px-6">
-          <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-foreground sm:text-xl">
-            <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-primary sm:h-9 sm:w-9">
-              <Image className="h-4 w-4 text-primary-foreground" />
-              <Sparkles className="absolute -right-1 -top-1 h-3 w-3 text-primary" />
-            </div>
-            <span>
-              Pixel<span className="gradient-text">Forge</span>
-            </span>
-          </Link>
+          <AnimatedLogo />
 
           <div className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
