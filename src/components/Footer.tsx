@@ -2,7 +2,8 @@ import { Image, Github, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="border-t bg-card/50 py-12">
+  <footer className="px-4 pb-4">
+    <div className="mx-auto max-w-6xl rounded-2xl border border-border/50 bg-card/60 backdrop-blur-xl shadow-lg py-12">
     <div className="container mx-auto px-4">
       <div className="grid gap-8 md:grid-cols-3">
         <div>

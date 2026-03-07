@@ -15,7 +15,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b bg-background/60 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 px-4 pt-3">
+      <div className="mx-auto max-w-6xl rounded-2xl border border-border/50 bg-background/60 backdrop-blur-xl shadow-lg">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2.5 font-display text-xl font-bold text-foreground">
           <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
