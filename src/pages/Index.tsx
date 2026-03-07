@@ -87,7 +87,7 @@ const Index = () => {
                   Explore Tools
                 </a>
                 <a
-                  href="#tools"
+                  href="#how-it-works"
                   className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-6 py-3 font-display text-sm font-semibold text-foreground hover:bg-secondary transition-all"
                 >
                   How It Works
@@ -128,6 +128,49 @@ const Index = () => {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {tools.map((tool, i) => (
             <ToolCard key={tool.title} {...tool} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="container mx-auto px-4 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10 text-center"
+        >
+          <span className="mb-3 inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+            Simple & Fast
+          </span>
+          <h2 className="mb-3 font-display text-3xl font-bold text-foreground md:text-4xl">
+            How It <span className="gradient-text">Works</span>
+          </h2>
+          <p className="mx-auto max-w-lg text-muted-foreground">
+            Three simple steps to edit your photos — no sign up, no uploads, no hassle.
+          </p>
+        </motion.div>
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {[
+            { step: "1", title: "Upload Image", desc: "Drag & drop or click to upload any image from your device. Supports PNG, JPG, WebP, GIF, and BMP." },
+            { step: "2", title: "Edit & Adjust", desc: "Choose a tool, tweak the settings, and see changes in real-time. Use undo/redo anytime." },
+            { step: "3", title: "Download Result", desc: "Download your edited image instantly. No watermarks, no limits, completely free." },
+          ].map((item, i) => (
+            <motion.div
+              key={item.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="glass-card rounded-2xl p-6 text-center"
+            >
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 font-display text-2xl font-bold text-primary">
+                {item.step}
+              </div>
+              <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{item.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+            </motion.div>
           ))}
         </div>
       </section>

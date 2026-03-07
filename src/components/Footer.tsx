@@ -30,12 +30,12 @@ const Footer = () => (
             🔒 Zero uploads. 100% client-side. Your photos stay on your device.
           </p>
           <div className="flex gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-foreground transition-colors">
               <Github className="h-4 w-4" />
-            </div>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-foreground transition-colors">
               <Twitter className="h-4 w-4" />
-            </div>
+            </a>
           </div>
         </div>
       </div>
