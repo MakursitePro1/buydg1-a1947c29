@@ -10,6 +10,7 @@ import GlowingTestimonials from "@/components/GlowingTestimonials";
 import CounterSection from "@/components/CounterSection";
 import FloatingBanner from "@/components/FloatingBanner";
 import TrustedBySection from "@/components/TrustedBySection";
+import FAQSection from "@/components/FAQSection";
 import { motion } from "framer-motion";
 import {
   Scaling, Crop, Palette, RotateCw, FileDown, FileType,
@@ -238,6 +239,9 @@ const Index = () => {
           ))}
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQSection />
 
       <Footer />
     </div>
