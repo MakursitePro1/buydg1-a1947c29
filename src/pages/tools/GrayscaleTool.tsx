@@ -3,18 +3,21 @@ import ToolLayout from "@/components/ToolLayout";
 import ImageUploader from "@/components/ImageUploader";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useUndoRedo } from "@/hooks/useUndoRedo";
+import UndoRedoButtons from "@/components/UndoRedoButtons";
 
 const GrayscaleTool = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [image, setImage] = useState<HTMLImageElement | null>(null);
   const [mode, setMode] = useState<"luminosity" | "average" | "lightness">("luminosity");
+  const { canUndo, canRedo, saveState, undo, redo, reset } = useUndoRedo();
 
   const onImageLoad = useCallback((img: HTMLImageElement) => {
     setImage(img);
-    draw(img, "luminosity");
+    draw(img, "luminosity", true);
   }, []);
 
-  const draw = (img: HTMLImageElement, m: string) => {
+  const draw = (img: HTMLImageElement, m: string, save = false) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     canvas.width = img.naturalWidth;
@@ -35,11 +38,15 @@ const GrayscaleTool = () => {
       data[i] = data[i + 1] = data[i + 2] = gray;
     }
     ctx.putImageData(imageData, 0, 0);
+    if (save) saveState(canvas);
   };
 
   const handleMode = (m: "luminosity" | "average" | "lightness") => {
     setMode(m);
-    if (image) draw(image, m);
+    if (image) {
+      draw(image, m);
+      if (canvasRef.current) saveState(canvasRef.current);
+    }
   };
 
   const download = () => {
@@ -56,6 +63,7 @@ const GrayscaleTool = () => {
       {!image ? <ImageUploader onImageLoad={onImageLoad} /> : (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid gap-6 lg:grid-cols-[300px_1fr]">
           <div className="space-y-4 glass-card rounded-2xl p-5">
+            <UndoRedoButtons canUndo={canUndo} canRedo={canRedo} onUndo={() => canvasRef.current && undo(canvasRef.current)} onRedo={() => canvasRef.current && redo(canvasRef.current)} />
             <div>
               <p className="text-sm font-semibold text-foreground mb-2">Conversion Method</p>
               <div className="space-y-2">
@@ -73,7 +81,7 @@ const GrayscaleTool = () => {
                 ))}
               </div>
             </div>
-            <Button variant="outline" className="w-full" onClick={() => setImage(null)}>New Image</Button>
+            <Button variant="outline" className="w-full" onClick={() => { setImage(null); reset(); }}>New Image</Button>
           </div>
           <div className="overflow-auto glass-card rounded-2xl p-4">
             <canvas ref={canvasRef} className="max-w-full rounded-lg" />

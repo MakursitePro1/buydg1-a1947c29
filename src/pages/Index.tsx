@@ -87,7 +87,7 @@ const Index = () => {
                   Explore Tools
                 </a>
                 <a
-                  href="#tools"
+                  href="#how-it-works"
                   className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-6 py-3 font-display text-sm font-semibold text-foreground hover:bg-secondary transition-all"
                 >
                   How It Works

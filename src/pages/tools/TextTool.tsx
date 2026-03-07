@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
+import { useUndoRedo } from "@/hooks/useUndoRedo";
+import UndoRedoButtons from "@/components/UndoRedoButtons";
 
 const fonts = ["Arial", "Georgia", "Courier New", "Impact", "Comic Sans MS", "Verdana", "Times New Roman"];
 
@@ -20,13 +22,14 @@ const TextTool = () => {
   const [posX, setPosX] = useState(50);
   const [posY, setPosY] = useState(50);
   const [shadow, setShadow] = useState(true);
+  const { canUndo, canRedo, saveState, undo, redo, reset } = useUndoRedo();
 
   const onImageLoad = useCallback((img: HTMLImageElement) => {
     setImage(img);
-    draw(img, "Your Text Here", 48, "Arial", "#ffffff", 50, 50, true);
+    draw(img, "Your Text Here", 48, "Arial", "#ffffff", 50, 50, true, true);
   }, []);
 
-  const draw = (img: HTMLImageElement, t: string, size: number, font: string, col: string, px: number, py: number, sh: boolean) => {
+  const draw = (img: HTMLImageElement, t: string, size: number, font: string, col: string, px: number, py: number, sh: boolean, save = false) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     canvas.width = img.naturalWidth;
@@ -47,11 +50,19 @@ const TextTool = () => {
     ctx.fillStyle = col;
     ctx.fillText(t, x, y);
     ctx.shadowColor = "transparent";
+    if (save) saveState(canvas);
   };
 
   const update = (t: string, s: number, f: string, c: string, px: number, py: number, sh: boolean) => {
     setText(t); setFontSize(s); setFontFamily(f); setColor(c); setPosX(px); setPosY(py); setShadow(sh);
     if (image) draw(image, t, s, f, c, px, py, sh);
+  };
+
+  const applyText = () => {
+    if (image) {
+      draw(image, text, fontSize, fontFamily, color, posX, posY, shadow);
+      if (canvasRef.current) saveState(canvasRef.current);
+    }
   };
 
   const download = () => {
@@ -68,6 +79,7 @@ const TextTool = () => {
       {!image ? <ImageUploader onImageLoad={onImageLoad} /> : (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid gap-6 lg:grid-cols-[300px_1fr]">
           <div className="space-y-4 glass-card rounded-2xl p-5">
+            <UndoRedoButtons canUndo={canUndo} canRedo={canRedo} onUndo={() => canvasRef.current && undo(canvasRef.current)} onRedo={() => canvasRef.current && redo(canvasRef.current)} />
             <div>
               <Label>Text</Label>
               <Input value={text} onChange={(e) => update(e.target.value, fontSize, fontFamily, color, posX, posY, shadow)} />
@@ -97,7 +109,8 @@ const TextTool = () => {
               <Label>Y Position: {posY}%</Label>
               <Slider value={[posY]} min={0} max={100} onValueChange={([v]) => update(text, fontSize, fontFamily, color, posX, v, shadow)} />
             </div>
-            <Button variant="outline" className="w-full" onClick={() => setImage(null)}>New Image</Button>
+            <Button onClick={applyText} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Apply Text</Button>
+            <Button variant="outline" className="w-full" onClick={() => { setImage(null); reset(); }}>New Image</Button>
           </div>
           <div className="overflow-auto glass-card rounded-2xl p-4">
             <canvas ref={canvasRef} className="max-w-full rounded-lg" />
