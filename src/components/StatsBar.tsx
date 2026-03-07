@@ -39,19 +39,19 @@ const StatsBar = () => {
       </div>
 
       {/* Row 2: One card centered */}
-      <div className="flex justify-center lg:justify-start">
+      <div className="flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.5 }}
-          className="flex items-center gap-2.5 sm:gap-3 glass-card rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 w-full sm:w-auto sm:min-w-[200px]"
+          className="flex items-center justify-center gap-3 sm:gap-4 glass-card rounded-xl px-5 sm:px-6 py-3 sm:py-4 w-full sm:w-auto sm:min-w-[240px]"
         >
-          <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
-            <ThirdIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
+          <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
+            <ThirdIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
           </div>
-          <div className="min-w-0">
-            <p className="text-xs sm:text-sm font-semibold text-foreground">{stats[2].label}</p>
-            <p className="text-[10px] sm:text-xs text-muted-foreground">{stats[2].desc}</p>
+          <div>
+            <p className="text-sm sm:text-base font-semibold text-foreground">{stats[2].label}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground">{stats[2].desc}</p>
           </div>
         </motion.div>
       </div>
