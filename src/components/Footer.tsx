@@ -2,9 +2,9 @@ import { Image, Github, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="border-t bg-card/50 py-12">
-    <div className="container mx-auto px-4">
-      <div className="grid gap-8 md:grid-cols-3">
+  <footer className="px-3 pb-4 pt-8 sm:px-4">
+    <div className="mx-auto max-w-6xl rounded-2xl border border-border/50 bg-card/60 backdrop-blur-xl shadow-lg py-10 px-6 sm:px-8">
+      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
         <div>
           <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-foreground mb-3">
             <Image className="h-5 w-5 text-primary" />
@@ -39,7 +39,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="mt-8 border-t pt-6 text-center text-xs text-muted-foreground">
+      <div className="mt-8 border-t border-border/50 pt-6 text-center text-xs text-muted-foreground">
         © 2026 PixelForge. Built with ❤️ for creators everywhere.
       </div>
     </div>

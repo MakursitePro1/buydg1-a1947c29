@@ -17,7 +17,7 @@ interface ToolLayoutProps {
 const ToolLayout = ({ title, description, children, onDownload, showDownload }: ToolLayoutProps) => (
   <div className="flex min-h-screen flex-col">
     <Navbar />
-    <main className="flex-1 grid-bg">
+    <main className="flex-1">
       <div className="container mx-auto px-4 py-8">
         <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
           <ArrowLeft className="h-4 w-4" /> Back to all tools
