@@ -4,9 +4,12 @@ import ToolCard from "@/components/ToolCard";
 import HeroOrb from "@/components/HeroOrb";
 import StatsBar from "@/components/StatsBar";
 import AIToolsCarousel from "@/components/AIToolsCarousel";
+import AIToolsSection from "@/components/AIToolsSection";
 import ParticleField from "@/components/ParticleField";
 import GlowingTestimonials from "@/components/GlowingTestimonials";
 import CounterSection from "@/components/CounterSection";
+import FloatingBanner from "@/components/FloatingBanner";
+import TrustedBySection from "@/components/TrustedBySection";
 import { motion } from "framer-motion";
 import {
   Scaling, Crop, Palette, RotateCw, FileDown, FileType,
@@ -42,29 +45,30 @@ const Index = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="hero-section relative overflow-hidden py-20 md:py-28">
+      <section className="hero-section relative overflow-hidden py-12 sm:py-16 md:py-24 lg:py-28">
         <ParticleField />
         <div className="container relative mx-auto px-4">
-          <div className="flex items-center justify-between gap-12">
-            <div className="max-w-2xl">
+          <div className="flex flex-col items-center text-center lg:flex-row lg:items-center lg:justify-between lg:text-left gap-8 lg:gap-12">
+            <div className="max-w-2xl w-full">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
+                className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-primary"
               >
-                <Sparkles className="h-3.5 w-3.5" /> 12+ Free Tools — No Sign Up Required
+                <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> 12+ Free Tools — No Sign Up
               </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.6 }}
-                className="mb-5 font-display text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl"
+                className="mb-4 sm:mb-5 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground"
               >
                 Edit Photos{" "}
                 <span className="gradient-text">Instantly</span>
-                <br />
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
                 Right in Your Browser
               </motion.h1>
 
@@ -72,7 +76,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="mb-8 text-lg text-muted-foreground md:text-xl leading-relaxed"
+                className="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0"
               >
                 Resize, crop, compress, add filters, and much more — all for free.
                 Your images never leave your device. Zero uploads. Total privacy.
@@ -82,18 +86,18 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="flex items-center gap-3"
+                className="flex items-center justify-center lg:justify-start gap-3"
               >
                 <a
                   href="#tools"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 sm:px-6 py-3 font-display text-sm font-semibold text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105 whitespace-nowrap"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 sm:px-6 py-2.5 sm:py-3 font-display text-xs sm:text-sm font-semibold text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105 whitespace-nowrap"
                   style={{ boxShadow: "0 8px 32px hsl(28 100% 55% / 0.3)" }}
                 >
                   Explore Tools
                 </a>
                 <a
                   href="#how-it-works"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-5 sm:px-6 py-3 font-display text-sm font-semibold text-foreground hover:bg-secondary transition-all whitespace-nowrap"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-4 sm:px-6 py-2.5 sm:py-3 font-display text-xs sm:text-sm font-semibold text-foreground hover:bg-secondary transition-all whitespace-nowrap"
                 >
                   How It Works
                 </a>
@@ -107,12 +111,18 @@ const Index = () => {
         </div>
 
         {/* Background decorative elements */}
-        <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-accent/5 blur-3xl" />
+        <div className="absolute top-20 right-0 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-36 sm:w-56 lg:w-72 h-36 sm:h-56 lg:h-72 rounded-full bg-accent/5 blur-3xl" />
       </section>
 
       {/* AI Tools Carousel */}
       <AIToolsCarousel />
+
+      {/* Dedicated AI Tools Section */}
+      <AIToolsSection />
+
+      {/* Trusted By / Metrics */}
+      <TrustedBySection />
 
       {/* Animated Counters */}
       <CounterSection />
@@ -188,6 +198,9 @@ const Index = () => {
 
       {/* Testimonials */}
       <GlowingTestimonials />
+
+      {/* CTA Banner */}
+      <FloatingBanner />
 
       {/* Coming Soon */}
       <section className="container mx-auto px-4 pb-20">
