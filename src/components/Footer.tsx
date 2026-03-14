@@ -100,7 +100,7 @@ const Footer = () => (
           {/* Privacy */}
           <div>
             <h4 className="font-display text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-              <div className="h-1 w-4 rounded-full bg-green-500" />
+              <div className="h-1 w-4 rounded-full bg-primary/60" />
               Privacy First
             </h4>
             <div className="glass-card rounded-xl p-4" style={{ transform: "none" }}>
