@@ -4,7 +4,7 @@ import { ChevronDown, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    q: "Is Banglafeel really free to use?",
+    q: "Is Makursite really free to use?",
     a: "Yes, 100% free! There are no hidden charges, no subscriptions, and no limits on how many images you can edit. All tools are available without signing up.",
   },
   {
@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     q: "What image formats are supported?",
-    a: "Banglafeel supports PNG, JPEG, WebP, GIF, and BMP formats. You can also convert between these formats using our Convert tool.",
+    a: "Makursite supports PNG, JPEG, WebP, GIF, and BMP formats. You can also convert between these formats using our Convert tool.",
   },
   {
-    q: "Can I use Banglafeel on my phone?",
-    a: "Absolutely! Banglafeel is fully responsive and works on all devices — smartphones, tablets, and desktops. No app installation needed.",
+    q: "Can I use Makursite on my phone?",
+    a: "Absolutely! Makursite is fully responsive and works on all devices — smartphones, tablets, and desktops. No app installation needed.",
   },
   {
     q: "What AI tools are available?",
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Do edited images have watermarks?",
-    a: "Never. All images you download from Banglafeel are completely watermark-free. What you edit is exactly what you get.",
+    a: "Never. All images you download from Makursite are completely watermark-free. What you edit is exactly what you get.",
   },
 ];
 
@@ -84,7 +84,6 @@ const FAQItem = ({ q, a, index }: { q: string; a: string; index: number }) => {
 
 const FAQSection = () => (
   <section id="faq" className="py-20 relative overflow-hidden">
-    {/* Ambient glow */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
     <div className="container mx-auto px-4">
@@ -105,7 +104,7 @@ const FAQSection = () => (
           Frequently Asked <span className="gradient-text">Questions</span>
         </h2>
         <p className="mx-auto max-w-lg text-muted-foreground">
-          Everything you need to know about Banglafeel and how it works.
+          Everything you need to know about Makursite and how it works.
         </p>
       </motion.div>
 

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import AllToolsPage from "./pages/AllToolsPage";
 import ResizeTool from "./pages/tools/ResizeTool";
 import CropTool from "./pages/tools/CropTool";
 import FiltersTool from "./pages/tools/FiltersTool";
@@ -28,6 +29,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/tools" element={<AllToolsPage />} />
           <Route path="/tool/resize" element={<ResizeTool />} />
           <Route path="/tool/crop" element={<CropTool />} />
           <Route path="/tool/filters" element={<FiltersTool />} />
