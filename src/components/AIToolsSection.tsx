@@ -160,12 +160,12 @@ const AIToolsSection = () => (
         viewport={{ once: true }}
         className="mt-10 text-center"
       >
-        <a
-          href="#tools"
+        <Link
+          to="/tools"
           className="inline-flex items-center gap-2 rounded-xl bg-primary/10 px-6 py-3 font-display text-sm font-semibold text-primary hover:bg-primary/20 transition-all"
         >
           <Zap className="h-4 w-4" /> সকল টুলস দেখুন
-        </a>
+        </Link>
       </motion.div>
     </div>
   </section>

@@ -115,7 +115,7 @@ const Footer = () => (
       {/* Bottom bar */}
       <div className="border-t border-border/30 px-6 sm:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-xs text-muted-foreground flex items-center gap-1">
-          © 2026 Makursite. Built with <Heart className="h-3 w-3 text-red-500 fill-red-500" /> for creators everywhere.
+          © 2026 Makursite. Built with <Heart className="h-3 w-3 text-destructive fill-destructive" /> for creators everywhere.
         </p>
         <p className="text-xs text-muted-foreground">
           All processing is done in your browser.
